@@ -703,6 +703,12 @@ a {
   font-size: 13.5px;
 }
 
+.install-top {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 26px 20px 0;
+}
+
 .install-note {
   max-width: 540px;
   margin: 40px auto 0;
@@ -711,6 +717,10 @@ a {
   border-radius: 14px;
   background: var(--surface);
   text-align: left;
+}
+
+.install-top .install-note {
+  margin: 0 auto;
 }
 
 .install-note-title {
