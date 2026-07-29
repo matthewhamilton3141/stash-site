@@ -1,6 +1,6 @@
 // Light/dark toggle. Initial theme is set inline in <head> to avoid a flash.
 (function () {
-  var KEY = "jot-site-theme";
+  var KEY = "stash-site-theme";
   var root = document.documentElement;
   var btn = document.getElementById("theme-toggle");
   if (!btn) return;
