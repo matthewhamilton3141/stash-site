@@ -703,6 +703,75 @@ a {
   font-size: 13.5px;
 }
 
+.install-note {
+  max-width: 540px;
+  margin: 40px auto 0;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
+}
+
+.install-note-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.install-note-body {
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+.copy-row {
+  display: flex;
+  gap: 8px;
+}
+
+.copy-row code {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--panel-text);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 9px;
+  padding: 11px 13px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 9px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, background 0.2s;
+}
+
+.copy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--accent-shadow);
+}
+
+.copy-btn.copied {
+  background: var(--green);
+  color: #10240f;
+}
+
 /* ---------- Footer ---------- */
 .foot {
   border-top: 1px solid var(--border-soft);
