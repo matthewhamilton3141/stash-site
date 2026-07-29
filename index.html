@@ -21,6 +21,15 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Set the theme before paint to avoid a flash.
+      (function () {
+        var k = "jot-site-theme";
+        var s = localStorage.getItem(k);
+        var t = s || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -34,9 +43,32 @@
         <nav class="macbar-nav">
           <a href="#loop">How it works</a>
           <a href="#features">Features</a>
-          <a href="https://github.com/matthewhamilton3141/jot" target="_blank" rel="noopener">GitHub</a>
         </nav>
-        <a class="macbar-time" href="#download">Download</a>
+        <div class="macbar-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle light and dark theme" title="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <a class="icon-btn" href="https://github.com/matthewhamilton3141/jot" target="_blank" rel="noopener" title="View on GitHub" aria-label="GitHub repository">
+            <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.01.28-2.09 0-3.09 0 0-.79-.25-2.65 1.01A9.64 9.64 0 0 0 12 3c-2.35 0-4.27 1.02-5.4 2.01-1.86-1.26-2.65-1.01-2.65-1.01-.28 1-.28 2.09 0 3.09A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+          </a>
+          <a class="icon-btn" href="https://matthewhamilton.dev" target="_blank" rel="noopener" title="Matthew Hamilton — portfolio" aria-label="Matthew Hamilton portfolio">
+            <svg viewBox="0 0 800 1000" width="14" height="17" fill="currentColor" aria-hidden="true">
+              <polygon points="400,0 456,215 400,312 344,215" />
+              <polygon points="0,183 283,222 186,253 371,995" />
+              <polygon points="800,183 517,222 614,253 429,995" />
+            </svg>
+          </a>
+          <a class="macbar-time" href="#download">Download</a>
+        </div>
       </div>
     </header>
 
@@ -52,7 +84,7 @@
             no database, no account.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://github.com/matthewhamilton3141/jot/releases/latest" target="_blank" rel="noopener">
+            <a class="btn btn-primary" href="https://github.com/matthewhamilton3141/jot/releases/latest/download/Jot_0.1.0_universal.dmg" target="_blank" rel="noopener">
               Download for macOS
             </a>
             <a class="btn btn-ghost" href="https://github.com/matthewhamilton3141/jot" target="_blank" rel="noopener">
@@ -184,7 +216,7 @@
         <h2>Keep your code a keystroke away.</h2>
         <p>macOS 12+. Free and open source.</p>
         <div class="cta-row center">
-          <a class="btn btn-primary" href="https://github.com/matthewhamilton3141/jot/releases/latest" target="_blank" rel="noopener">
+          <a class="btn btn-primary" href="https://github.com/matthewhamilton3141/jot/releases/latest/download/Jot_0.1.0_universal.dmg" target="_blank" rel="noopener">
             Download for macOS
           </a>
           <a class="btn btn-ghost" href="https://github.com/matthewhamilton3141/jot" target="_blank" rel="noopener">
@@ -199,5 +231,6 @@
       <span class="foot-mono">stash it · find it · paste it</span>
       <a href="https://github.com/matthewhamilton3141/jot" target="_blank" rel="noopener">github.com/matthewhamilton3141/jot</a>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

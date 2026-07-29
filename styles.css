@@ -1,27 +1,55 @@
 :root {
-  --ink: #0f1117;
-  --ink-2: #12151d;
-  --surface: #1a1e2b;
-  --surface-2: #212636;
-  --border: #2b3145;
-  --border-soft: #232838;
-  --text: #e8ebf3;
-  --dim: #969db2;
-  --faint: #6c7387;
+  /* Theme-flipping surfaces & text (dark is default) */
+  --bg: #17110c;
+  --surface: #221a13;
+  --surface-2: #2b2118;
+  --border: #3a2c20;
+  --border-soft: #2c2118;
+  --text: #f3ebe1;
+  --dim: #b7a897;
+  --faint: #8b7c6b;
+  --glow-1: rgba(255, 150, 70, 0.13);
+  --glow-2: rgba(255, 95, 60, 0.11);
+  --macbar-bg: rgba(23, 17, 12, 0.72);
 
-  --blue: #58a6ff;
-  --green: #56d364;
-  --amber: #e3b341;
-  --purple: #bc8cff;
+  /* Warm accents (fixed across themes) */
+  --accent: #ff8a3d;
+  --accent-2: #ff5e33;
+  --accent-shadow: rgba(255, 122, 60, 0.34);
+  --accent-shadow-strong: rgba(255, 122, 60, 0.46);
 
-  --accent: #4c8dff;
-  --accent-2: #7c5cff;
+  /* Warm token colors, reused for dots / feature labels / syntax */
+  --blue: #f2b34e;   /* amber   */
+  --green: #b7c26a;  /* olive   */
+  --amber: #ffcf6b;  /* gold    */
+  --purple: #ff9068; /* coral   */
+
+  /* Code windows stay dark in both themes */
+  --panel: #17110c;
+  --panel-border: #38291d;
+  --panel-text: #f3ebe1;
+  --panel-dim: #a2917d;
+  --panel-faint: #857766;
 
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: "Inter", -apple-system, system-ui, sans-serif;
   --display: "Space Grotesk", var(--sans);
 
   --maxw: 1120px;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8f1e6;
+  --surface: #fdf8f0;
+  --surface-2: #f2e7d6;
+  --border: #e7d8c4;
+  --border-soft: #efe4d5;
+  --text: #2c2118;
+  --dim: #6f5f4d;
+  --faint: #9c8b76;
+  --glow-1: rgba(255, 150, 70, 0.2);
+  --glow-2: rgba(255, 110, 80, 0.12);
+  --macbar-bg: rgba(255, 248, 240, 0.78);
 }
 
 * {
@@ -37,10 +65,10 @@ body {
   overflow-x: hidden;
   font-family: var(--sans);
   color: var(--text);
-  background: var(--ink);
+  background: var(--bg);
   background-image:
-    radial-gradient(900px 500px at 78% -8%, rgba(124, 92, 255, 0.16), transparent 60%),
-    radial-gradient(760px 460px at 12% 2%, rgba(76, 141, 255, 0.14), transparent 55%);
+    radial-gradient(900px 500px at 78% -8%, var(--glow-1), transparent 60%),
+    radial-gradient(760px 460px at 12% 2%, var(--glow-2), transparent 55%);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
@@ -63,8 +91,8 @@ a {
   top: 0;
   z-index: 50;
   height: 38px;
-  background: rgba(12, 14, 20, 0.72);
-  backdrop-filter: saturate(140%) blur(14px);
+  background: var(--macbar-bg);
+  backdrop-filter: saturate(150%) blur(14px);
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -95,6 +123,11 @@ a {
   opacity: 0.92;
 }
 
+:root[data-theme="light"] .brand-glyph {
+  filter: none;
+  opacity: 0.82;
+}
+
 .macbar-nav {
   display: flex;
   gap: 20px;
@@ -112,8 +145,51 @@ a {
   color: var(--text);
 }
 
-.macbar-time {
+.macbar-actions {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.icon-btn:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.icon-btn svg {
+  display: block;
+}
+
+.icon-sun {
+  display: block;
+}
+.icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .icon-moon {
+  display: block;
+}
+
+.macbar-time {
+  margin-left: 4px;
   font-family: var(--mono);
   font-size: 12.5px;
   font-weight: 500;
@@ -121,13 +197,13 @@ a {
   padding: 4px 12px;
   border: 1px solid var(--border);
   border-radius: 7px;
-  background: rgba(76, 141, 255, 0.1);
+  background: rgba(255, 122, 60, 0.12);
   transition: border-color 0.15s, background 0.15s;
 }
 
 .macbar-time:hover {
   border-color: var(--accent);
-  background: rgba(76, 141, 255, 0.18);
+  background: rgba(255, 122, 60, 0.2);
 }
 
 /* ---------- Shared ---------- */
@@ -166,11 +242,10 @@ a {
   font-size: 0.86em;
   padding: 2px 8px;
   border-radius: 7px;
-  background: linear-gradient(180deg, #2a3046, #20263a);
+  background: var(--surface-2);
   border: 1px solid var(--border);
-  border-bottom-color: #171b28;
-  box-shadow: 0 1px 0 #171b28;
-  color: #d7deff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  color: var(--text);
   white-space: nowrap;
 }
 
@@ -199,12 +274,12 @@ a {
 .btn-primary {
   color: #fff;
   background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  box-shadow: 0 8px 22px rgba(76, 141, 255, 0.32);
+  box-shadow: 0 8px 22px var(--accent-shadow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(76, 141, 255, 0.42);
+  box-shadow: 0 12px 28px var(--accent-shadow-strong);
 }
 
 .btn-ghost {
@@ -259,12 +334,8 @@ a {
   overflow-wrap: break-word;
 }
 
-.lede {
-  overflow-wrap: break-word;
-}
-
 .grad {
-  background: linear-gradient(100deg, var(--blue), var(--purple));
+  background: linear-gradient(100deg, var(--amber), var(--purple));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -275,6 +346,7 @@ a {
   color: var(--dim);
   max-width: 46ch;
   margin: 0 0 30px;
+  overflow-wrap: break-word;
 }
 
 .fineprint {
@@ -298,16 +370,17 @@ a {
   width: 2px;
   height: 104px;
   background: linear-gradient(var(--accent), transparent);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .capture-win {
   width: 100%;
   max-width: 420px;
-  background: var(--ink-2);
-  border: 1px solid var(--border);
+  color: var(--panel-text);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
   border-radius: 14px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(124, 92, 255, 0.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 140, 60, 0.08);
   overflow: hidden;
   animation: drop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -328,7 +401,7 @@ a {
   align-items: center;
   gap: 10px;
   padding: 13px 15px;
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--panel-border);
 }
 
 .capture-title {
@@ -345,11 +418,19 @@ a {
 
 .chip-blue {
   color: var(--blue);
-  background: rgba(88, 166, 255, 0.14);
+  background: rgba(242, 179, 78, 0.16);
 }
 
 .capture-top .kbd-sm {
   margin-left: auto;
+}
+
+/* Keycaps sit on dark code panels — keep them dark regardless of theme. */
+.capture-win .kbd,
+.file-card .kbd {
+  background: #262019;
+  border-color: #3d2e22;
+  color: #efe7dc;
 }
 
 .code {
@@ -359,7 +440,7 @@ a {
   font-size: 13px;
   line-height: 1.7;
   overflow-x: auto;
-  color: var(--text);
+  color: var(--panel-text);
 }
 
 .code code {
@@ -367,10 +448,10 @@ a {
 }
 
 .c-key { color: var(--purple); }
-.c-var { color: var(--text); }
+.c-var { color: var(--panel-text); }
 .c-fn { color: var(--blue); }
-.c-comment { color: var(--faint); font-style: italic; }
-.c-fence { color: var(--faint); }
+.c-comment { color: var(--panel-faint); font-style: italic; }
+.c-fence { color: var(--panel-faint); }
 .c-fm { color: var(--amber); }
 
 .caret {
@@ -393,10 +474,10 @@ a {
   display: flex;
   gap: 16px;
   padding: 11px 16px;
-  border-top: 1px solid var(--border-soft);
+  border-top: 1px solid var(--panel-border);
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--faint);
+  color: var(--panel-faint);
 }
 
 /* ---------- Loop ---------- */
@@ -418,7 +499,7 @@ a {
 .step {
   position: relative;
   padding: 26px 24px 28px;
-  background: linear-gradient(180deg, var(--surface), var(--ink-2));
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
   border: 1px solid var(--border-soft);
   border-radius: 16px;
 }
@@ -511,7 +592,7 @@ a {
   font-family: var(--mono);
   font-size: 0.86em;
   color: var(--purple);
-  background: rgba(188, 140, 255, 0.12);
+  background: rgba(255, 144, 104, 0.15);
   padding: 1px 6px;
   border-radius: 5px;
 }
@@ -551,10 +632,11 @@ a {
 }
 
 .file-card {
-  background: var(--ink-2);
-  border: 1px solid var(--border);
+  color: var(--panel-text);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
   border-radius: 14px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   overflow: hidden;
 }
 
@@ -563,7 +645,7 @@ a {
   align-items: center;
   gap: 12px;
   padding: 12px 15px;
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--panel-border);
 }
 
 .dots {
@@ -575,13 +657,13 @@ a {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--border);
+  background: var(--panel-border);
 }
 
 .file-name {
   font-family: var(--mono);
   font-size: 12.5px;
-  color: var(--dim);
+  color: var(--panel-dim);
 }
 
 /* ---------- Download ---------- */
@@ -597,7 +679,7 @@ a {
   height: 82px;
   border-radius: 20px;
   margin-bottom: 26px;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
 }
 
 .download h2 {
