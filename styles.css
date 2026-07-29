@@ -175,17 +175,13 @@ a {
   display: block;
 }
 
-.icon-sun {
-  display: block;
-}
-.icon-moon {
+/* Show one glyph per theme. Scoped to [data-theme] so these out-specify
+   `.icon-btn svg { display: block }`; the visible one stays block from that rule. */
+:root[data-theme="dark"] .icon-moon {
   display: none;
 }
 :root[data-theme="light"] .icon-sun {
   display: none;
-}
-:root[data-theme="light"] .icon-moon {
-  display: block;
 }
 
 .macbar-time {
