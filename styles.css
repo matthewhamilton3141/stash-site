@@ -79,6 +79,15 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background: rgba(255, 138, 61, 0.3);
+  color: inherit;
+}
+::-moz-selection {
+  background: rgba(255, 138, 61, 0.3);
+  color: inherit;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
