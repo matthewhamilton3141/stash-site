@@ -73,21 +73,6 @@
     </header>
 
     <main id="top">
-      <!-- First-launch install note, up top so downloaders see it immediately -->
-      <div class="install-top">
-        <div class="install-note">
-          <p class="install-note-title">First launch on macOS</p>
-          <p class="install-note-body">
-            Stash isn't notarized yet, so macOS quarantines it on download. After
-            dragging it to Applications, run this once in Terminal, then open it:
-          </p>
-          <div class="copy-row">
-            <code id="xattr-cmd">xattr -cr /Applications/Stash.app</code>
-            <button class="copy-btn" data-copy="#xattr-cmd" aria-label="Copy command">Copy</button>
-          </div>
-        </div>
-      </div>
-
       <!-- Hero -->
       <section class="hero">
         <div class="hero-copy">
@@ -133,6 +118,21 @@
           </div>
         </div>
       </section>
+
+      <!-- First-launch install note, right under the hero -->
+      <div class="install-top">
+        <div class="install-note">
+          <p class="install-note-title">First launch on macOS</p>
+          <p class="install-note-body">
+            Stash isn't notarized yet, so macOS quarantines it on download. After
+            dragging it to Applications, run this once in Terminal, then open it:
+          </p>
+          <div class="copy-row">
+            <code id="xattr-cmd">xattr -cr /Applications/Stash.app</code>
+            <button class="copy-btn" data-copy="#xattr-cmd" aria-label="Copy command">Copy</button>
+          </div>
+        </div>
+      </div>
 
       <!-- The loop: a real three-step sequence, so it earns numbers -->
       <section class="loop" id="loop">
