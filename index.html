@@ -45,6 +45,9 @@
           <a href="#features">Features</a>
         </nav>
         <div class="macbar-actions">
+          <button id="palette-open" class="macbar-key" title="Command palette (⌘K)" aria-label="Open the command palette">
+            <span class="kbd kbd-xs">⌘K</span>
+          </button>
           <button id="theme-toggle" class="icon-btn" aria-label="Toggle light and dark theme" title="Toggle theme">
             <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="4" />
@@ -192,7 +195,7 @@
       </section>
 
       <!-- Real artifact: a note on disk -->
-      <section class="files">
+      <section class="files" id="files">
         <div class="files-copy">
           <p class="eyebrow">Nothing to lock in</p>
           <h2 class="section-h left">A note is a file you can read.</h2>
@@ -227,7 +230,8 @@
 
       <!-- Download -->
       <section class="download" id="download">
-        <img src="assets/stash.png" alt="Stash icon" class="download-icon" />
+        <img src="assets/stash.png" alt="Stash icon" class="download-icon on-dark" />
+        <img src="assets/stash-light.png" alt="" aria-hidden="true" class="download-icon on-light" />
         <h2>Keep your code a keystroke away.</h2>
         <p>macOS 12+. Free and open source.</p>
         <div class="cta-row center">
@@ -246,6 +250,35 @@
       <span class="foot-mono">stash it · find it · paste it</span>
       <a href="https://github.com/matthewhamilton3141/stash" target="_blank" rel="noopener">github.com/matthewhamilton3141/stash</a>
     </footer>
+    <!-- ⌘K palette: the site works the way the app does. -->
+    <div class="palette" id="palette" hidden>
+      <div class="palette-scrim" data-palette-close></div>
+      <div class="palette-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="palette-row">
+          <span class="palette-prompt" aria-hidden="true">&gt;</span>
+          <input
+            id="palette-input"
+            class="palette-input"
+            type="text"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="palette-list"
+            aria-autocomplete="list"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Jump to a section, grab the download…"
+          />
+        </div>
+        <ul class="palette-list" id="palette-list" role="listbox" aria-label="Commands"></ul>
+        <p class="palette-empty" id="palette-empty" hidden>Nothing matches. Try fewer letters.</p>
+        <div class="palette-foot">
+          <span><span class="kbd kbd-xs">↑↓</span> move</span>
+          <span><span class="kbd kbd-xs">↵</span> open</span>
+          <span><span class="kbd kbd-xs">esc</span> close</span>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
