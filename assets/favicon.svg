@@ -1,0 +1,17 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- The app icon's keycap, cropped to the tile. At 16px the espresso
+       ground of the full icon eats the mark, so the key fills the frame. -->
+  <defs>
+    <linearGradient id="key" x1="0.12" y1="0" x2="0.88" y2="1">
+      <stop offset="0" stop-color="#ffb168"/>
+      <stop offset="0.5" stop-color="#ff8a3d"/>
+      <stop offset="1" stop-color="#ff6a34"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#key)"/>
+  <g transform="translate(12.75 8.22) scale(0.1887)" fill="none" stroke="#1b140e" stroke-width="48"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M162 46 C140 26 96 20 70 38 C40 58 42 100 76 116 L124 138
+             C162 156 164 202 132 220 C104 236 62 232 40 212"/>
+  </g>
+</svg>
