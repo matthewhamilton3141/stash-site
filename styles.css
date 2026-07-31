@@ -441,12 +441,20 @@ a {
   margin-left: auto;
 }
 
-/* Keycaps sit on dark code panels — keep them dark regardless of theme. */
+/* Keycaps sit on dark code panels in dark mode... */
 .capture-win .kbd,
 .file-card .kbd {
   background: #262019;
   border-color: #3d2e22;
   color: #efe7dc;
+}
+
+/* ...but follow the panel to a light keycap in light mode. */
+:root[data-theme="light"] .capture-win .kbd,
+:root[data-theme="light"] .file-card .kbd {
+  background: #f1e6d4;
+  border-color: #ddccb4;
+  color: #2c2118;
 }
 
 .code {
