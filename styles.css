@@ -50,6 +50,13 @@
   --glow-1: rgba(255, 150, 70, 0.2);
   --glow-2: rgba(255, 110, 80, 0.12);
   --macbar-bg: rgba(255, 248, 240, 0.78);
+
+  /* Code windows go light too, matching the app's light-mode editor */
+  --panel: #fffdf8;
+  --panel-border: #ecdcc6;
+  --panel-text: #2c2118;
+  --panel-dim: #6f5f4d;
+  --panel-faint: #9c8b76;
 }
 
 * {
@@ -390,6 +397,10 @@ a {
   animation: drop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+:root[data-theme="light"] .capture-win {
+  box-shadow: 0 24px 60px rgba(120, 80, 30, 0.18), 0 0 0 1px rgba(255, 140, 60, 0.1);
+}
+
 @keyframes drop {
   from {
     opacity: 0;
@@ -458,6 +469,15 @@ a {
 .c-comment { color: var(--panel-faint); font-style: italic; }
 .c-fence { color: var(--panel-faint); }
 .c-fm { color: var(--amber); }
+
+/* On the light panel the warm tokens wash out — deepen them for contrast. */
+:root[data-theme="light"] .c-key { color: #c2410c; }
+:root[data-theme="light"] .c-fn { color: #9a6410; }
+:root[data-theme="light"] .c-fm { color: #9a6410; }
+:root[data-theme="light"] .chip-blue {
+  color: #9a6410;
+  background: rgba(154, 100, 16, 0.12);
+}
 
 .caret {
   display: inline-block;
